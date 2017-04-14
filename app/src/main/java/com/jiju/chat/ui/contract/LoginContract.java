@@ -5,15 +5,24 @@ package com.jiju.chat.ui.contract;
  */
 
 public interface LoginContract {
+    interface View {
+        void onClearText();
 
+        void onLoginResult(Boolean result, int code);
 
-    void onClearText();
+        void showDia(boolean flag);
 
-    void onLoginResult(Boolean result, int code);
+        void serErrorForEmail(boolean flag);
 
-    void showDia(boolean flag);
+        void serErrorForPass(boolean flag);
+    }
 
-    void serErrorForEmail(boolean flag);
+    interface Presenter {
+        void login(String name, String passWord);
 
-    void serErrorForPass(boolean flag);
+        void clearStr();
+
+        void showDia(boolean flag);
+    }
+
 }

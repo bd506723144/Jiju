@@ -3,20 +3,21 @@ package com.jiju.chat.ui.presenter.presenterImpl;
 import android.os.Handler;
 import android.text.TextUtils;
 
-import com.jiju.chat.been.User;
 import com.jiju.chat.ui.contract.LoginContract;
-import com.jiju.chat.ui.presenter.LoginPresenter;
+
+import javax.inject.Inject;
 
 /**
  * Created by PC on 2017/4/12.
  */
 
-public class LoginPresenterIml implements LoginPresenter {
+public class LoginPresenterIml implements LoginContract.Presenter {
 
-    private LoginContract loginActivity;
-    private User user;
 
-    public LoginPresenterIml(LoginContract loginActivity) {
+    private LoginContract.View loginActivity;
+
+    @Inject
+    public LoginPresenterIml(LoginContract.View loginActivity) {
         this.loginActivity = loginActivity;
         initUser();
     }

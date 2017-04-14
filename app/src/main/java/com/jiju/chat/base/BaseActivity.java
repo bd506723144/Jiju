@@ -6,6 +6,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.jiju.chat.JiJUApp;
+import com.jiju.chat.component.AppComponent;
+
 /**
  * Created by PC on 2017/4/12.
  */
@@ -17,9 +20,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+        setupActivityComponent(JiJUApp.getsInstance().getAppComponent());
         initData();
         configViews();
     }
+
+    protected abstract void setupActivityComponent(AppComponent appComponent);
 
     /**
      * activity布局
