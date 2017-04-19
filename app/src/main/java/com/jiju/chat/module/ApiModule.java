@@ -12,7 +12,7 @@ import okhttp3.OkHttpClient;
 
 @Module
 public class ApiModule {
-    @Provides
+    @Provides // 注明该方法是用来提供依赖对象的方法
     public OkHttpClient provideOkHttpClient() {
 
 //        LoggingInterceptor logging = new LoggingInterceptor(new Logger());

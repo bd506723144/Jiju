@@ -16,12 +16,17 @@
 package com.jiju.chat.module;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 
 @Module
 public class AppModule {
+
     private Context context;
 
     public AppModule(Context context) {
@@ -29,6 +34,7 @@ public class AppModule {
     }
 
     @Provides
+    @Singleton // 注明该方法是用来提供依赖对象的方法
     public Context provideContext() {
         return context;
     }

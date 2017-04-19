@@ -17,9 +17,9 @@ public class JiJUApp extends BaseApplication {
 
     @Override
     public void onCreate() {
+        initComponent();
         super.onCreate();
         sInstance = this;
-        initCompoent();
         Utils.init(getApplicationContext());
     }
 
@@ -27,7 +27,7 @@ public class JiJUApp extends BaseApplication {
         return appComponent;
     }
 
-    private void initCompoent() {
+    private void initComponent() {
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .build();

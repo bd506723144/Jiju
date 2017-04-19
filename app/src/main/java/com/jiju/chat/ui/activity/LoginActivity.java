@@ -14,21 +14,17 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.jiju.chat.R;
 import com.jiju.chat.base.BaseActivity;
 import com.jiju.chat.component.AppComponent;
+import com.jiju.chat.component.DaggerLoginComponent;
+import com.jiju.chat.module.LoginModule;
 import com.jiju.chat.ui.contract.LoginContract;
-import com.jiju.chat.ui.presenter.LoginPresenter;
 import com.jiju.chat.ui.presenter.presenterImpl.LoginPresenterIml;
 
 import java.util.ArrayList;
@@ -37,7 +33,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -45,55 +41,44 @@ public class LoginActivity extends BaseActivity implements LoaderCallbacks<Curso
 
     private static final int REQUEST_READ_CONTACTS = 0;
     @BindView(R.id.email)
-    private AutoCompleteTextView mEmailView;
+    AutoCompleteTextView mEmailView;
     @BindView(R.id.password)
-    private EditText mPasswordView;
+    EditText mPasswordView;
     @BindView(R.id.login_progress)
-    private View mProgressView;
+    View mProgressView;
     @BindView(R.id.login_form)
-    private View mLoginFormView;
+    View mLoginFormView;
+
     @Inject
     LoginPresenterIml loginPresenter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
-        populateAutoComplete();
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });
-
-    }
-
-    @Override
-    protected void setupActivityComponent(AppComponent appComponent) {
-
-    }
 
     @Override
     public int getLayoutId() {
         return R.layout.activity_login;
     }
 
+
+    @Override
+    protected void setupActivityComponent(AppComponent appComponent) {
+        DaggerLoginComponent.builder()
+                .loginModule(new LoginModule(this))
+                .build()
+                .inject(this);
+        if(null != loginPresenter){
+
+        }
+
+    }
+
+    @OnClick(R.id.email_sign_in_button)
+    void onClick() {
+        attemptLogin();
+    }
+
     @Override
     public void initToolBar() {
-
+        populateAutoComplete();
     }
 
     @Override
@@ -110,7 +95,6 @@ public class LoginActivity extends BaseActivity implements LoaderCallbacks<Curso
         if (!mayRequestContacts()) {
             return;
         }
-
         getLoaderManager().initLoader(0, null, this);
     }
 
@@ -159,7 +143,6 @@ public class LoginActivity extends BaseActivity implements LoaderCallbacks<Curso
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
         loginPresenter.login(email, password);
-
     }
 
 

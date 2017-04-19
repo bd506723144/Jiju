@@ -17,6 +17,7 @@ package com.jiju.chat.component;
 
 import android.content.Context;
 
+import com.jiju.chat.base.BaseActivity;
 import com.jiju.chat.module.AppModule;
 
 import dagger.Component;
@@ -27,6 +28,5 @@ import dagger.Component;
  */
 @Component(modules = {AppModule.class})
 public interface AppComponent {
-
-    Context getContext();
+    void inject(BaseActivity activity);
 }
