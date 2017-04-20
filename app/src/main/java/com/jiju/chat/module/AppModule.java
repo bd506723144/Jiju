@@ -16,8 +16,6 @@
 package com.jiju.chat.module;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import javax.inject.Singleton;
 

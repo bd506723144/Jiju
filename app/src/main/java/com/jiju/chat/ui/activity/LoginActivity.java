@@ -65,10 +65,6 @@ public class LoginActivity extends BaseActivity implements LoaderCallbacks<Curso
                 .loginModule(new LoginModule(this))
                 .build()
                 .inject(this);
-        if(null != loginPresenter){
-
-        }
-
     }
 
     @OnClick(R.id.email_sign_in_button)

@@ -21,7 +21,7 @@ public class LoginModule {
     }
 
     @Provides
-    LoginActivity provideMainView() {
+    LoginActivity provideLoginActivity() {
         return mView;
     }
 }

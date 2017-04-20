@@ -2,6 +2,7 @@ package com.jiju.chat.ui.presenter.presenterImpl;
 
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.jiju.chat.ui.activity.LoginActivity;
 import com.jiju.chat.ui.contract.LoginContract;
@@ -24,7 +25,6 @@ public class LoginPresenterIml implements LoginContract.Presenter {
     }
 
     private void initUser() {
-
     }
 
 
@@ -64,6 +64,7 @@ public class LoginPresenterIml implements LoginContract.Presenter {
     public void clearStr() {
         loginActivity.onClearText();
     }
+
 
     @Override
     public void showDia(boolean flag) {

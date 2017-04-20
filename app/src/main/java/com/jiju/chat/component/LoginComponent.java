@@ -11,7 +11,7 @@ import dagger.Component;
  */
 
 
-@Component(modules = LoginModule.class)
+@Component(modules = {LoginModule.class})
 public interface LoginComponent {
     void inject(LoginActivity activity);
 }
