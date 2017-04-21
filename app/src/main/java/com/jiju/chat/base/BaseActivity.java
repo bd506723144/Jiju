@@ -1,16 +1,12 @@
 package com.jiju.chat.base;
 
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.jiju.chat.JiJUApp;
 import com.jiju.chat.component.AppComponent;
-
-import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 
@@ -25,7 +21,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         ButterKnife.bind(this);
-        ((JiJUApp)getApplication()).getAppComponent().inject(this);
         setupActivityComponent(JiJUApp.getsInstance().getAppComponent());
         initToolBar();
         initData();

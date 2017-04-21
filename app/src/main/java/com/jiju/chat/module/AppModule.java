@@ -15,7 +15,7 @@
  */
 package com.jiju.chat.module;
 
-import android.content.Context;
+import android.app.Application;
 
 import javax.inject.Singleton;
 
@@ -25,15 +25,16 @@ import dagger.Provides;
 @Module
 public class AppModule {
 
-    private Context context;
+    private Application context;
 
-    public AppModule(Context context) {
+    public AppModule(Application context) {
         this.context = context;
     }
 
     @Provides
     @Singleton // 注明该方法是用来提供依赖对象的方法
-    public Context provideContext() {
+    public Application provideContext() {
         return context;
     }
+
 }
