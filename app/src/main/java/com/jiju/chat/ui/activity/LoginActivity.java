@@ -22,7 +22,7 @@ import android.widget.EditText;
 import com.jiju.chat.R;
 import com.jiju.chat.base.BaseActivity;
 import com.jiju.chat.component.AppComponent;
-import com.jiju.chat.component.DaggerLoginComponent;
+import com.jiju.chat.component.DaggerActivityComponent;
 import com.jiju.chat.module.LoginModule;
 import com.jiju.chat.ui.contract.LoginContract;
 import com.jiju.chat.ui.presenter.presenterImpl.LoginPresenterIml;
@@ -61,10 +61,11 @@ public class LoginActivity extends BaseActivity implements LoaderCallbacks<Curso
 
     @Override
     protected void setupActivityComponent(AppComponent appComponent) {
-        DaggerLoginComponent.builder()
-                .loginModule(new LoginModule(this))
+        DaggerActivityComponent.builder()
+                .appComponent(appComponent)
                 .build()
                 .inject(this);
+
     }
 
     @OnClick(R.id.email_sign_in_button)
@@ -84,7 +85,7 @@ public class LoginActivity extends BaseActivity implements LoaderCallbacks<Curso
 
     @Override
     public void configViews() {
-
+        loginPresenter.attachView(this);
     }
 
     private void populateAutoComplete() {
@@ -258,6 +259,16 @@ public class LoginActivity extends BaseActivity implements LoaderCallbacks<Curso
             mPasswordView.setError("密码错误");
             mPasswordView.requestFocus();
         }
+    }
+
+    @Override
+    public void showError() {
+
+    }
+
+    @Override
+    public void complete() {
+
     }
 
 

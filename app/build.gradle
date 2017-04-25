@@ -18,6 +18,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        packagingOptions {
+            exclude 'META-INF/DEPENDENCIES.txt'
+            exclude 'META-INF/NOTICE'
+            exclude 'META-INF/NOTICE.txt'
+            exclude 'META-INF/LICENSE'
+            exclude 'META-INF/LICENSE.txt'
+            exclude 'META-INF/rxjava.properties'
+            exclude 'META-INF/rxjava.PROPERTIES'
+            exclude 'META-INF/RXJAVA.properties'
+            exclude 'META-INF/RXJAVA.PROPERTIES'
+            exclude 'META-INF/rxjava'
+            exclude 'META-INF/RXJAVA'
+        }
+    }
 }
 
 allprojects {
@@ -36,24 +51,29 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    //    刷新
-    //    图片选择
-    //    工具
-    //    图片库
-    //    net
-    //    注解
-    //    rx
-    //    BaseAdapter
     compile 'com.android.support:design:25.2.0'
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.lcodecorex:tkrefreshlayout:1.0.6'
-    compile 'com.github.LuckSiege.PictureSelector:picture_library:v1.2.7'
-    compile 'com.blankj:utilcode:1.3.5'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    //net
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.1'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+    compile 'com.squareup.retrofit2:converter-scalars:2.0.0-beta4'
+    // Rx
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'io.reactivex:rxjava:1.1.5'
+//    compile 'io.reactivex.rxjava2:rxjava:2.0.8'
+//    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+//    compile 'com.squareup.retrofit2:adapter-rxjava:+'
+//    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+//    compile 'com.squareup.retrofit2:converter-scalars:2.0.0-beta4'
+    // Annotation
     compile 'com.google.dagger:dagger:2.0.2'
     compile 'com.jakewharton:butterknife:8.5.1'
-    compile 'io.reactivex.rxjava2:rxjava:2.0.8'
+    //tools
+    compile 'com.github.LuckSiege.PictureSelector:picture_library:v1.2.7'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.blankj:utilcode:1.3.5'
     compile 'org.byteam.superadapter:superadapter:3.6.6'
     compile 'javax.annotation:javax.annotation-api:1.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'

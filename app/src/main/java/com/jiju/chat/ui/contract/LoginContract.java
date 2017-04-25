@@ -1,11 +1,13 @@
 package com.jiju.chat.ui.contract;
 
+import com.jiju.chat.base.BaseContract;
+
 /**
  * Created by PC on 2017/4/12.
  */
 
 public interface LoginContract {
-    interface View {
+    interface View extends BaseContract.BaseView {
         void onClearText();
 
         void onLoginResult(Boolean result, int code);
@@ -17,7 +19,7 @@ public interface LoginContract {
         void serErrorForPass(boolean flag);
     }
 
-    interface Presenter {
+    interface Presenter<T> extends BaseContract.BasePresenter<T> {
         void login(String name, String passWord);
 
         void clearStr();

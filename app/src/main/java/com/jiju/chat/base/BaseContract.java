@@ -13,26 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jiju.chat.module;
+package com.jiju.chat.base;
 
-import android.app.Application;
-import android.content.Context;
+/**
+ * @author yuyh.
+ * @date 16/8/6.
+ */
+public interface BaseContract {
 
-import dagger.Module;
-import dagger.Provides;
+    interface BasePresenter<T> {
 
-@Module
-public class AppModule {
+        void attachView(T view);
 
-    private Context context;
-
-    public AppModule(Context context) {
-        this.context = context;
+        void detachView();
     }
 
-    @Provides
-    public Context provideContext() {
-        return context;
-    }
+    interface BaseView {
 
+        void showError();
+
+        void complete();
+
+    }
 }

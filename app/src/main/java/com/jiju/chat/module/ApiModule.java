@@ -1,14 +1,12 @@
 package com.jiju.chat.module;
 
-import java.util.concurrent.TimeUnit;
+import com.jiju.chat.api.JiJuApi;
 
-import javax.inject.Singleton;
+import java.util.concurrent.TimeUnit;
 
 import dagger.Module;
 import dagger.Provides;
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
 
 /**
  * Created by PC on 2017/4/12.
@@ -17,8 +15,6 @@ import retrofit2.Retrofit;
 @Module
 public class ApiModule {
 
-
-    @Singleton
     @Provides
      OkHttpClient provideOkHttpClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder().connectTimeout(10, TimeUnit.SECONDS)
@@ -28,6 +24,11 @@ public class ApiModule {
 //                .addInterceptor(new HeaderInterceptor())
 //                .addInterceptor(logging);
         return builder.build();
+    }
+
+    @Provides
+    protected JiJuApi provideJiJuService(OkHttpClient okHttpClient) {
+        return JiJuApi.getInstance(okHttpClient);
     }
 
 }
