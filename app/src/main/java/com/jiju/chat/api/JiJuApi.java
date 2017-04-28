@@ -1,9 +1,12 @@
 package com.jiju.chat.api;
 
+import com.jiju.chat.been.Test;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Observable;
 
 /**
  * Created by PC on 2017/4/25.
@@ -11,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class JiJuApi {
 
-    public static final String API_BASE_URL = "http://api.zhuishushenqi.com";
+    public static final String API_BASE_URL = "https://api.douban.com";
     private JiJuApiService service;
 
     public static JiJuApi instance;
@@ -31,5 +34,10 @@ public class JiJuApi {
         if (instance == null)
             instance = new JiJuApi(okHttpClient);
         return instance;
+    }
+
+
+    public Observable<Test> getUserInfo() {
+        return service.getUserInfo();
     }
 }

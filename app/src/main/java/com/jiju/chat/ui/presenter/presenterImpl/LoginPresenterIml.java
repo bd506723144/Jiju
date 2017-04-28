@@ -4,12 +4,21 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.blankj.utilcode.utils.LogUtils;
 import com.jiju.chat.api.JiJuApi;
+import com.jiju.chat.app.util.MyUtil;
 import com.jiju.chat.base.RxPresenter;
-import com.jiju.chat.ui.activity.LoginActivity;
+import com.jiju.chat.been.Test;
+import com.jiju.chat.been.User;
 import com.jiju.chat.ui.contract.LoginContract;
 
 import javax.inject.Inject;
+
+import rx.Observable;
+import rx.Observer;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by PC on 2017/4/12.
@@ -34,35 +43,43 @@ public class LoginPresenterIml extends RxPresenter<LoginContract.View> implement
     public void login(String email, String password) {
         showDia(true);
         boolean cancel = false;
-        if(null == jiJuApi){
-
-        }
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             cancel = true;
             mView.serErrorForPass(true);
-            showDia(false);
         }
         if (TextUtils.isEmpty(email)) {
             cancel = true;
             mView.serErrorForEmail(true);
-            showDia(false);
         } else if (!isEmailValid(email)) {
             cancel = true;
             mView.serErrorForEmail(true);
-            showDia(false);
         }
         if (cancel) {
             showDia(false);
             return;
         }
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mView.onLoginResult(false, 1001);
-                showDia(false);
-            }
-        }, 2000);
+        Subscription rxSubscription = jiJuApi.getUserInfo().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Test>() {
+                    @Override
+                    public void onCompleted() {
+                        showDia(false);
+                    }
 
+                    @Override
+                    public void onError(Throwable e) {
+                        showDia(false);
+                        LogUtils.e(""+e.toString());
+                    }
+
+                    @Override
+                    public void onNext(Test data) {
+                        if (data != null && mView != null) {
+                            mView.onLoginResult(true,100);
+                        }
+                    }
+                });
+        addSubscrebe(rxSubscription);
     }
 
     @Override

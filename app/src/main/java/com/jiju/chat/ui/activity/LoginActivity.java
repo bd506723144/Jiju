@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -23,7 +24,6 @@ import com.jiju.chat.R;
 import com.jiju.chat.base.BaseActivity;
 import com.jiju.chat.component.AppComponent;
 import com.jiju.chat.component.DaggerActivityComponent;
-import com.jiju.chat.module.LoginModule;
 import com.jiju.chat.ui.contract.LoginContract;
 import com.jiju.chat.ui.presenter.presenterImpl.LoginPresenterIml;
 
@@ -231,7 +231,8 @@ public class LoginActivity extends BaseActivity implements LoaderCallbacks<Curso
     @Override
     public void onLoginResult(Boolean result, int code) {
         if (result) {
-
+            startActivity(new Intent(this,MainActivity.class));
+            finish();
         } else {
             Snackbar.make(mEmailView, "错误异常", Snackbar.LENGTH_SHORT)
                     .setAction("Undo", null)
@@ -282,5 +283,12 @@ public class LoginActivity extends BaseActivity implements LoaderCallbacks<Curso
         int IS_PRIMARY = 1;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (loginPresenter != null) {
+            loginPresenter.detachView();
+        }
+    }
 }
 
