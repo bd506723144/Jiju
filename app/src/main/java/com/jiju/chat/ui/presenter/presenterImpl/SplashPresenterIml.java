@@ -9,8 +9,11 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
-import rx.Observable;
-import rx.Observer;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+
 
 /**
  * Created by PC on 2017/4/20.
@@ -32,17 +35,23 @@ public class SplashPresenterIml extends RxPresenter<SplashContract.View> impleme
             Observable.timer(4, TimeUnit.SECONDS)
                     .subscribe(new Observer<Long>() {
                         @Override
-                        public void onCompleted() {
-                            mView.showMsgText("123");
+                        public void onSubscribe(@NonNull Disposable d) {
+
                         }
 
                         @Override
-                        public void onError(Throwable e) {
+                        public void onNext(@NonNull Long aLong) {
 
                         }
 
-                        public void onNext(Long number) {
+                        @Override
+                        public void onError(@NonNull Throwable e) {
 
+                        }
+
+                        @Override
+                        public void onComplete() {
+                            mView.showMsgText("123");
                         }
                     });
 

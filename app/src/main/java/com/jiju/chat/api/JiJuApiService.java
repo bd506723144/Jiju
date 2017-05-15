@@ -1,11 +1,9 @@
 package com.jiju.chat.api;
 
 import com.jiju.chat.been.Test;
-import com.jiju.chat.been.User;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
-import rx.Observable;
 
 /**
  * Created by PC on 2017/4/25.

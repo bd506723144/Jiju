@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FC7e03</color>
-    <color name="colorPrimaryDark">#de842b</color>
-    <color name="colorAccent">#FC7e03</color>
+    <!--<color name="colorPrimary">#FC7e03</color>-->
+    <!--<color name="colorPrimaryDark">#de842b</color>-->
+    <!--<color name="colorAccent">#FC7e03</color>-->
+    <color name="colorPrimary">#686766</color>
+    <color name="colorPrimaryDark">#686766</color>
+    <color name="colorAccent">#686766</color>
     <color name="white">#ffffff</color>
     <!--通用背景色-->
     <color name="common_bg">@color/white</color>

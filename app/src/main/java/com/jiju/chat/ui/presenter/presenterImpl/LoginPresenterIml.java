@@ -1,24 +1,21 @@
 package com.jiju.chat.ui.presenter.presenterImpl;
 
-import android.os.Handler;
 import android.text.TextUtils;
-import android.util.Log;
 
-import com.blankj.utilcode.utils.LogUtils;
 import com.jiju.chat.api.JiJuApi;
-import com.jiju.chat.app.util.MyUtil;
 import com.jiju.chat.base.RxPresenter;
 import com.jiju.chat.been.Test;
-import com.jiju.chat.been.User;
 import com.jiju.chat.ui.contract.LoginContract;
+
 
 import javax.inject.Inject;
 
-import rx.Observable;
-import rx.Observer;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by PC on 2017/4/12.
@@ -58,28 +55,32 @@ public class LoginPresenterIml extends RxPresenter<LoginContract.View> implement
             showDia(false);
             return;
         }
-        Subscription rxSubscription = jiJuApi.getUserInfo().subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+        Observable<Test> testObservable = jiJuApi.getUserInfo()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+        testObservable
                 .subscribe(new Observer<Test>() {
                     @Override
-                    public void onCompleted() {
-                        showDia(false);
+                    public void onSubscribe(@NonNull Disposable d) {
+
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                        showDia(false);
-                        LogUtils.e(""+e.toString());
+                    public void onNext(@NonNull Test test) {
+
                     }
 
                     @Override
-                    public void onNext(Test data) {
-                        if (data != null && mView != null) {
-                            mView.onLoginResult(true,100);
-                        }
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 });
-        addSubscrebe(rxSubscription);
+        addSubscrebe(testObservable.subscribe());
     }
 
     @Override

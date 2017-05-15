@@ -1,30 +1,29 @@
 package com.jiju.chat.base;
 
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
 
-/**
- * Created by PC on 2017/4/25.
- */
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 public class RxPresenter<T extends BaseContract.BaseView> implements BaseContract.BasePresenter<T> {
 
     protected T mView;
-    protected CompositeSubscription mCompositeSubscription;
+    protected CompositeDisposable mCompositeSubscription;
 
 
     protected void unSubscribe() {
         if (mCompositeSubscription != null) {
-            mCompositeSubscription.unsubscribe();
+            mCompositeSubscription.dispose();
         }
     }
 
-    protected void addSubscrebe(Subscription subscription) {
+    protected void addSubscrebe(Disposable subscription) {
         if (mCompositeSubscription == null) {
-            mCompositeSubscription = new CompositeSubscription();
+            mCompositeSubscription = new CompositeDisposable();
         }
         mCompositeSubscription.add(subscription);
+
     }
+
 
 
     @Override

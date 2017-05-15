@@ -1,6 +1,5 @@
 package com.jiju.chat.been;
 
-import rx.Observable;
 
 /**
  * Created by PC on 2017/4/28.
