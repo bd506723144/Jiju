@@ -8,6 +8,7 @@ public class RxPresenter<T extends BaseContract.BaseView> implements BaseContrac
 
     protected T mView;
     protected CompositeDisposable mCompositeSubscription;
+    public final static String TAG = "jiju";
 
 
     protected void unSubscribe() {

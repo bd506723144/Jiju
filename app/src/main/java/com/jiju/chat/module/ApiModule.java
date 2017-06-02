@@ -1,6 +1,7 @@
 package com.jiju.chat.module;
 
 import com.jiju.chat.api.JiJuApi;
+import com.jiju.chat.app.util.HeaderInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,8 +21,8 @@ public class ApiModule {
         OkHttpClient.Builder builder = new OkHttpClient.Builder().connectTimeout(10, TimeUnit.SECONDS)
                 .connectTimeout(20 * 1000, TimeUnit.MILLISECONDS)
                 .readTimeout(20 * 1000, TimeUnit.MILLISECONDS)
-                .retryOnConnectionFailure(true); // 失败重发
-//                .addInterceptor(new HeaderInterceptor())
+                .retryOnConnectionFailure(true) // 失败重发
+                .addInterceptor(new HeaderInterceptor());
 //                .addInterceptor(logging);
         return builder.build();
     }

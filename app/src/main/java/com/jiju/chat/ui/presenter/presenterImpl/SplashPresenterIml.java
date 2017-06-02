@@ -32,7 +32,7 @@ public class SplashPresenterIml extends RxPresenter<SplashContract.View> impleme
     @Override
     public void jumpMain(boolean flag) {
         if (flag) {
-            Observable.timer(4, TimeUnit.SECONDS)
+            Observable.timer(3, TimeUnit.SECONDS)
                     .subscribe(new Observer<Long>() {
                         @Override
                         public void onSubscribe(@NonNull Disposable d) {

@@ -22,5 +22,6 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("com.jiju.chat", appContext.getPackageName());
+        System.out.print("asdfadsf");
     }
 }

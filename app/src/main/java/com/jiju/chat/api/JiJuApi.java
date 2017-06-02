@@ -1,5 +1,6 @@
 package com.jiju.chat.api;
 
+import com.jiju.chat.been.HttpResult;
 import com.jiju.chat.been.Test;
 
 import io.reactivex.Observable;

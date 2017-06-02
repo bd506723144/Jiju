@@ -1,6 +1,9 @@
 package com.jiju.chat.ui.fragment;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.TextView;
 
 import com.jiju.chat.R;
 import com.jiju.chat.base.BaseFragment;
@@ -16,6 +19,8 @@ public class FragmentChatList extends BaseFragment  {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
+    @BindView(R.id.id123)
+    TextView textView;
 
     @Override
     public int getLayoutResId() {
@@ -29,7 +34,6 @@ public class FragmentChatList extends BaseFragment  {
 
     @Override
     public void initData() {
-
     }
 
     @Override

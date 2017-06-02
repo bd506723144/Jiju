@@ -34,6 +34,7 @@ android {
             exclude 'META-INF/RXJAVA'
         }
     }
+    useLibrary 'org.apache.http.legacy'
 }
 
 allprojects {
@@ -53,7 +54,7 @@ dependencies {
     })
     //tools
     compile 'com.android.support:design:25.2.0'
-    compile 'com.android.support:appcompat-v7:25.3.0'
+//    compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.lcodecorex:tkrefreshlayout:1.0.6'
     // Rx
     compile 'io.reactivex.rxjava2:rxjava:2.1.0'
@@ -76,4 +77,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     apt 'com.google.dagger:dagger-compiler:2.0.2'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    compile 'com.google.android.gms:play-services-gcm:9.4.0'
+    compile 'com.hyphenate:hyphenate-sdk:3.3.2'
+//    compile project(path: ':easeui')
 }
