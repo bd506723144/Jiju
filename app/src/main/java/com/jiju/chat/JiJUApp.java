@@ -21,6 +21,7 @@ public class JiJUApp extends BaseApplication {
         super.onCreate();
         sInstance = this;
         Utils.init(getApplicationContext());
+
     }
 
     public AppComponent getAppComponent() {

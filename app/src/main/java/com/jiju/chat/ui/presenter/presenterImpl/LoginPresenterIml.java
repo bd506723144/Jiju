@@ -1,8 +1,14 @@
 package com.jiju.chat.ui.presenter.presenterImpl;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.jiju.chat.JiJUApp;
+import com.jiju.chat.R;
 import com.jiju.chat.api.JiJuApi;
 import com.jiju.chat.base.RxPresenter;
 import com.jiju.chat.ui.contract.LoginContract;
@@ -57,6 +63,10 @@ public class LoginPresenterIml extends RxPresenter<LoginContract.View> implement
             showDia(false);
             return;
         }
+        GoogleSignInOptions build = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(JiJUApp.getsInstance().getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
 
         Observer<Object > testObservable = new Observer<Object >() {
             @Override

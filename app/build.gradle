@@ -10,14 +10,34 @@ android {
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
+        versionName "2.0"
+        lintOptions {
+            checkReleaseBuilds false
+            abortOnError false
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("C:/Users/PC/Desktop/key/jiju.jks")
+            storePassword "111111"
+            keyAlias "jijus"
+            keyPassword "111111"
+        }
+
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            zipAlignEnabled false
+            //移除无用资源
+            shrinkResources false
+            //debugs使用release签名
+            signingConfig signingConfigs.release
         }
     }
     packagingOptions {
@@ -78,4 +98,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     apt 'com.google.dagger:dagger-compiler:2.0.2'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
+    //firebase
+    compile 'com.google.firebase:firebase-auth:9.0.0'
+    compile 'com.google.android.gms:play-services-auth:9.0.0'
 }
