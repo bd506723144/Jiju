@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 25
@@ -77,8 +78,4 @@ dependencies {
     testCompile 'junit:junit:4.12'
     apt 'com.google.dagger:dagger-compiler:2.0.2'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
-
-    compile 'com.google.android.gms:play-services-gcm:9.4.0'
-    compile 'com.hyphenate:hyphenate-sdk:3.3.2'
-//    compile project(path: ':easeui')
 }

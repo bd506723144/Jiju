@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "412223192655",
+    "firebase_url": "https://jiju-63da8.firebaseio.com",
+    "project_id": "jiju-63da8",
+    "storage_bucket": "jiju-63da8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412223192655:android:5b62fb10f4f7b72f",
+        "android_client_info": {
+          "package_name": "com.jiju.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412223192655-ckk53q0bp6ped30detvev7infagpmca0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jiju.chat",
+            "certificate_hash": "d5dff7779424ec489553434e12f4626354aa3674"
+          }
+        },
+        {
+          "client_id": "412223192655-0db9rreou42jt5f6dlhu6u1rsefje2mp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaYr3V6I7Qhm08qGI0QmJQJ0a6zalhvOc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412223192655-0db9rreou42jt5f6dlhu6u1rsefje2mp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
