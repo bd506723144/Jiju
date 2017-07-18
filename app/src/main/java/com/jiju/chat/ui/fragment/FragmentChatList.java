@@ -34,6 +34,7 @@ public class FragmentChatList extends BaseFragment  {
 
     @Override
     public void initData() {
+        textView.setText("FragmentChatList");
     }
 
     @Override

@@ -1,8 +1,6 @@
 package com.jiju.chat;
 
 import com.blankj.utilcode.utils.Utils;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.firebase.FirebaseApp;
 import com.jiju.chat.base.BaseApplication;
 import com.jiju.chat.component.AppComponent;
 import com.jiju.chat.component.DaggerAppComponent;
@@ -23,12 +21,6 @@ public class JiJUApp extends BaseApplication {
         super.onCreate();
         sInstance = this;
         Utils.init(getApplicationContext());
-        GoogleSignInOptions gso = new GoogleSignInOptions
-                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        FirebaseApp.initializeApp(getApplicationContext());
-
     }
 
     public AppComponent getAppComponent() {

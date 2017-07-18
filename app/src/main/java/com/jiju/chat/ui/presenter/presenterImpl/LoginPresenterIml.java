@@ -1,16 +1,8 @@
 package com.jiju.chat.ui.presenter.presenterImpl;
 
-import android.app.Activity;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.blankj.utilcode.utils.ToastUtils;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.jiju.chat.R;
 import com.jiju.chat.api.JiJuApi;
 import com.jiju.chat.base.RxPresenter;
 import com.jiju.chat.ui.contract.LoginContract;
@@ -66,7 +58,7 @@ public class LoginPresenterIml extends RxPresenter<LoginContract.View> implement
             showDia(false);
             return;
         }
-
+        mView.onLoginResult(true, 1);
         Observer<Object> testObservable = new Observer<Object>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
@@ -87,65 +79,9 @@ public class LoginPresenterIml extends RxPresenter<LoginContract.View> implement
             @Override
             public void onComplete() {
                 Log.d(TAG, "onComplete");
-//                mView.onLoginResult(true, 1);
+
             }
         };
-        Observable.zip(Observable.create(new ObservableOnSubscribe<String>() {
-            @Override
-            public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-                Log.d(TAG, "emit A");
-                emitter.onNext("A");
-                Log.d(TAG, "emit B");
-                emitter.onNext("B");
-                Log.d(TAG, "emit C");
-                emitter.onNext("C");
-                Log.d(TAG, "emit D");
-                emitter.onNext("D");
-                Log.d(TAG, "emit complete2");
-                emitter.onComplete();
-            }
-        }), Observable.create(new ObservableOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-                Log.d(TAG, "emit 1");
-                emitter.onNext(1);
-                Log.d(TAG, "emit 2");
-                emitter.onNext(2);
-                Log.d(TAG, "emit 3");
-                emitter.onNext(3);
-                Log.d(TAG, "emit complete1");
-                emitter.onComplete();
-            }
-        }), new BiFunction<String, Integer, Object>() {
-            @Override
-            public Object apply(@NonNull String s, @NonNull Integer integer) throws Exception {
-
-                return integer + s;
-            }
-        }).observeOn(Schedulers.io()).subscribeOn(AndroidSchedulers.mainThread()).subscribe(testObservable);
-//        testObservable.subscribe(new Observer<Test>() {
-//            @Override
-//            public void onSubscribe(@NonNull Disposable d) {
-//                LogUtils.e("1233");
-//            }
-//
-//            @Override
-//            public void onNext(@NonNull Test testHttpResult) {
-//                String string = testHttpResult.toString();
-//                String binding = testHttpResult.getBinding();
-//                LogUtils.e("1231");
-//            }
-//
-//            @Override
-//            public void onError(@NonNull Throwable e) {
-//                LogUtils.e(e.toString());
-//            }
-//
-//            @Override
-//            public void onComplete() {
-//                LogUtils.e("123");
-//            }
-//        });
     }
 
     @Override

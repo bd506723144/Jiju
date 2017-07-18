@@ -56,6 +56,12 @@ android {
         }
     }
     useLibrary 'org.apache.http.legacy'
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 allprojects {
@@ -98,8 +104,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     apt 'com.google.dagger:dagger-compiler:2.0.2'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
-    //firebase
-    compile 'com.google.firebase:firebase-auth:9.6.1'
-    compile 'com.google.firebase:firebase-core:9.6.1'
+//    环信
+    compile 'com.hyphenate:hyphenate-sdk:3.3.0'
 
 }
