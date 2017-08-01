@@ -107,4 +107,5 @@ dependencies {
 //    环信
     compile 'com.hyphenate:hyphenate-sdk:3.3.0'
 
+    compile project(path: ':easeui')
 }

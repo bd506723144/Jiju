@@ -15,7 +15,6 @@ import butterknife.BindView;
  */
 
 public class FragmentChatList extends BaseFragment  {
-
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
