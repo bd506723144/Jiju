@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.jiju.chat.ui.activity.MainActivity">
+    tools:context="com.jiju.chat.com.project.chat.ui.activity.MainActivity">
 
-    <com.jiju.chat.view.MyViewPager
+    <com.project.cl.view.MyViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"

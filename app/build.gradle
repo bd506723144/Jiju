@@ -1,12 +1,11 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.jiju.chat"
+        applicationId "com.project.cl"
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
