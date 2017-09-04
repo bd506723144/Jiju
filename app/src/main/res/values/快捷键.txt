@@ -1,0 +1,42 @@
+快捷键：
+		ctrl+E 				最近打开
+		a+ c + v 			复制历史
+		c+   + n  			快速索引class
+		a+ c + home 			索引java文件中的xml 文件
+		c+ s + backspace  		回退上个打开文件（光标上次位置）
+		c+   + h   			查看所有父类
+		c+ s + 数字键盘 +— 		【折叠代码】
+		a+  + /  			复制分号前面文字
+		setting live templates          【代码块编辑 a + j 插入】
+		c+ s + 上下			代码块移动
+		s+c+ 上下			移动行，不会超出方法
+		c+a+  T				【逻辑处理，控制语句 try catch等 插入】
+		c+s+  Delte			【取消以上逻辑块代码】
+
+性能优化
+		Android 旋转图标 重复引入图片
+		<rotate  fromDegrees  toDegrees 45*N
+
+
+Android 命令相关
+		 
+		反编译 apktool d -f 
+		编译   apktool b
+		签名   jarsinger -verbose -keystore  别名 -signedjar  输出.apk 被签名.apk keystore
+		
+		dx --dex --output=xxx.dex xxx.class
+		javap -c -classpath . xxx
+		dexdump.exe -d  xxx.dex
+
+		1.电量显示：
+		adb shell content insert --uri content://settings/system --bind name:s:status_bar_show_battery_percent --bind value:i:1
+		2.全屏沉浸：
+		adb shell settings put global policy_control immersive.full=*
+		3.沉浸状态栏：
+		adb shell settings put global policy_control immersive.status=*
+		4.沉浸导航栏：
+		adb shell settings put global policy_control immersive.navigation=*
+		5.我们还可以单独控制哪些app不沉浸，例如以下代码设置google即时桌面不沉浸，其他程序沉浸：
+		adb shell settings put global policy_control immersive.full=apps,-com.google.android.googlequicksearchbox
+		6.如果想恢复到正常模式，运行下面的代码：
+		adb shell settings put global policy_control null

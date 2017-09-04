@@ -54,7 +54,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
 
     @Override
     public void showMsgText(String flag) {
-        startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, LoginActivityTest.class));
         finish();
     }
 
